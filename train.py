@@ -10,11 +10,19 @@ def train(patch_dim=15, tuple_size=3, num_classes=2):
                   metrics=['accuracy'])
     model.summary()
 
-    training_preprocessor = Preprocessor()
-    training_patches, labels = training_preprocessor.preprocess(80000, 0.7, patch_dim)
+    training_preprocessor = Preprocessor(
+        total_patches=80000,
+        positive_proportion=0.8,
+        patch_dim=patch_dim
+    )
+    training_patches, labels = training_preprocessor.preprocess()
 
-    validation_preprocessor = Preprocessor()
-    validation_patches, validation_labels = validation_preprocessor.preprocess(20000, 0.5, patch_dim)
+    validation_preprocessor = Preprocessor(
+        total_patches=20000,
+        positive_proportion=0.5,
+        patch_dim=patch_dim
+    )
+    validation_patches, validation_labels = validation_preprocessor.preprocess()
 
     one_hot_labels = to_categorical(labels)
     one_hot_validation_labels = to_categorical(validation_labels)

@@ -1,4 +1,4 @@
-from keras.engine import  Model
+from keras.engine import Model
 from keras.layers import Flatten, Dense, Input, Conv2D, MaxPool2D
 
 
