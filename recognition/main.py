@@ -2,14 +2,17 @@ from keras.models import load_model
 from keras.preprocessing import image
 import numpy as np
 from matplotlib import pyplot as plt
-from train import train
+from recognition.train import train
 
 
 def main(new_learning=False):
     if new_learning:
-        train(patch_dim=15)
+        train(patch_dim=15,
+              tuple_size=3,
+              num_classes=2,
+              epochs=5)
 
-    model = load_model('model_result.h5')
+    model = load_model('results/model_result.h5')
     img_rows, img_cols = 565, 584
     first_idx_row, first_idx_col = 7, 7
     is_vessel_prediction_threshold = 0.9

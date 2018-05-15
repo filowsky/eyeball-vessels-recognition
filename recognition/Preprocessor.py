@@ -100,7 +100,7 @@ class Preprocessor:
 
         print("Writing to pickle\n")
 
-        patches_dataset.to_pickle('patches_data_set.pkl')
+        patches_dataset.to_pickle('results/patches_data_set.pkl')
 
         print("Total time taken = %f mins\n" % ((time.time() - begin) / 60.0))
 
